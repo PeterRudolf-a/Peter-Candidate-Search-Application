@@ -8,3 +8,5 @@ interface Candidate {
     company: string;
     bio: string;
 }
+
+export default Candidate;
