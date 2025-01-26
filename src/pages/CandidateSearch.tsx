@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { searchGithub, searchGithubUser } from '../api/API';
-import CandidateCard from '../components/CandidateCard';
-import type Candidate from '../interfaces/Candidate.interface';
+import { useState, useEffect } from 'react'; // Import the useState and useEffect hooks
+import { searchGithub, searchGithubUser } from '../api/API'; // Import the searchGithub and searchGithubUser functions
+import CandidateCard from '../components/CandidateCard'; // Import the CandidateCard component
+import type Candidate from '../interfaces/Candidate.interface'; // Import the Candidate interface
 
 // This component is responsible for fetching a random candidate from the GitHub API and displaying it on the page.
 const CandidateSearch = () => {
@@ -18,6 +18,7 @@ const CandidateSearch = () => {
   // Fetch a random candidate from the GitHub API
   const fetchCandidate = async () => {
     try {
+      console.log(import.meta.env.VITE_GITHUB_TOKEN);
       const data = await searchGithub();
       
       // Check if data is empty
@@ -26,6 +27,7 @@ const CandidateSearch = () => {
         return; // Exit the function if no candidates are available
       }
   
+      // Generate a random index to select a random candidate
       const randomIndex = Math.floor(Math.random() * data.length);
       const randomCandidate = data[randomIndex];
   
@@ -35,6 +37,7 @@ const CandidateSearch = () => {
         return; // Exit the function if randomCandidate is undefined
       }
   
+      // Fetch the full user data for the random candidate
       const candidateData = await searchGithubUser(randomCandidate.login);
       setCurrentCandidate({
         id: candidateData.id,

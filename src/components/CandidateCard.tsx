@@ -1,9 +1,10 @@
-import type React from "react";
-import type Candidate from "../interfaces/Candidate.interface";
-import { IoIosAddCircleOutline } from "react-icons/io";
-import { IoIosRemoveCircleOutline } from "react-icons/io";
-import "./styles/CandidateCard.css";
+import type React from "react"; // Import the React module
+import type Candidate from "../interfaces/Candidate.interface"; // Import the Candidate interface
+import { IoIosAddCircleOutline } from "react-icons/io"; // Import the IoIosAddCircleOutline component from the react-icons/io module
+import { IoIosRemoveCircleOutline } from "react-icons/io"; // Import the IoIosRemoveCircleOutline component from the react-icons/io module
+import "./styles/CandidateCard.css"; // Import the CandidateCard.css file
 
+// Define the CandidateCardProps interface
 type CandidateCardProps = {
     currentCandidate: Candidate;
     addToSavedCandidates?: (() => void) | null;
@@ -16,6 +17,7 @@ type CandidateCardProps = {
     ) => void) | null;
 };
 
+// Define the CandidateCard component
 const CandidateCard = ({
     currentCandidate,
     addToSavedCandidates,
