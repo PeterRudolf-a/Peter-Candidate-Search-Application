@@ -1,34 +1,27 @@
 import type React from "react";
 import type Candidate from "../interfaces/Candidate.interface";
-import CandidateCard from "./CandidateCard";
 
 interface savedCandidatesProps {
     savedCandidates: Candidate[];
     removeFromStorage:
     ((
-        e: React.MouseEvent<SVGSVGElement, MouseEvent>,
+        e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
         currentlyOnSavedCandidatesList: boolean | null | undefined,
         name: string | null | undefined
     ) => void) | null;
 }
 
-const CandidatesAlreadySaved = ({
-    savedCandidates,
-    removeFromStorage,
-}: savedCandidatesProps) => {
+const CandidatesAlreadySaved = ({ savedCandidates, removeFromStorage }: savedCandidatesProps) => {
     return (
-        <div>
-            <h1>Saved Candidates</h1>
-            {savedCandidates.map((candidate) => (
-                <CandidateCard
-                    key={candidate.id}
-                    currentCandidate={candidate}
-                    onSavedCandidatesList={true}
-                    removeFromStorage={removeFromStorage}
-                />
-            ))}
-        </div>
+      <div>
+        {savedCandidates.map(candidate => (
+          <div key={candidate.id}>
+            <h2>{candidate.name}</h2>
+            <button onClick={(e) => removeFromStorage && removeFromStorage(e, true, candidate.name)}>Remove</button>
+          </div>
+        ))}
+      </div>
     );
-};
+  };
 
 export default CandidatesAlreadySaved;

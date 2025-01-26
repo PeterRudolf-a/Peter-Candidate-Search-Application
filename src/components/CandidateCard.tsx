@@ -2,6 +2,7 @@ import type React from "react";
 import type Candidate from "../interfaces/Candidate.interface";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { IoIosRemoveCircleOutline } from "react-icons/io";
+import "./styles/CandidateCard.css";
 
 type CandidateCardProps = {
     currentCandidate: Candidate;

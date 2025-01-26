@@ -1,0 +1,24 @@
+.candidate-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .candidate-card img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin-right: 16px;
+  }
+  
+  .candidate-info {
+    flex-grow: 1;
+  }
+  
+  .candidate-info h2 {
+    margin: 0;
+    font-size: 1.5em;
+  }

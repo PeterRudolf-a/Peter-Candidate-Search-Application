@@ -6,16 +6,16 @@ const Nav = () => {
 
   return (
     <div>
-      <nav>
+      <nav className='nav'>
         <ul>
-          <li>
+          <li className='nav-item'>
             <h2>
               <Link to="/" className={currentPage === '/' ? 'nav-link active' : 'nav-link'}>
                 Home
               </Link>
             </h2>
           </li>
-          <li>
+          <li className='nav-item'>
             <h2>
               <Link to="/saved-candidates" className={currentPage === '/saved-candidates' ? 'nav-link active' : 'nav-link'}>
                 Saved Candidates

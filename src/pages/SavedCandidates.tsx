@@ -7,7 +7,7 @@ const SavedCandidates = () => {
   const [savedCandidates, setSavedCandidates] = useState<Candidate[]>([]);
 
   const removeFromStorage = (
-    e: React.MouseEvent<SVGSVGElement, MouseEvent>,
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     currentlyOnSavedCandidatesList: boolean | null | undefined,
     name: string | null | undefined
   ) => {
@@ -22,20 +22,24 @@ const SavedCandidates = () => {
   }
 
   useEffect(() => {
-    const addedCandidates = localStorage.getItem("addedCandidates");
-    if (typeof addedCandidates === "string") {
-      setSavedCandidates(JSON.parse(addedCandidates));
-    }
+    const addedCandidates = JSON.parse(localStorage.getItem('addedCandidates') || '[]');
+    console.log("Retrieved candidates", addedCandidates);
+    setSavedCandidates(addedCandidates);
   }, []);
 
   return (
     <>
-      <h1>Potential Candidates</h1>
-      <p>Here are the candidates you have saved:</p>
-      <CandidatesAlreadySaved
-        savedCandidates={savedCandidates}
-        removeFromStorage={removeFromStorage}
-      />
+      <h1 className="pageHeader">Potential Candidates</h1>
+      {
+        savedCandidates.length > 0 ? (
+          <CandidatesAlreadySaved
+            savedCandidates={savedCandidates}
+            removeFromStorage={removeFromStorage}
+          />
+        ) : (
+          <p>No candidates saved</p>
+        )
+      }
     </>
   );
 };
