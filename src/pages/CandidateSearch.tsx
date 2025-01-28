@@ -18,7 +18,6 @@ const CandidateSearch = () => {
   // Fetch a random candidate from the GitHub API
   const fetchCandidate = async () => {
     try {
-      console.log(import.meta.env.VITE_GITHUB_TOKEN);
       const data = await searchGithub();
       
       // Check if data is empty
