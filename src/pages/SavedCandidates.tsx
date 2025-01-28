@@ -1,14 +1,14 @@
-import type React from "react"; // Import the React type
-import { useEffect, useState } from "react"; // Import the useEffect and useState hooks
-import CandidatesAlreadySaved from "../components/CandidatesAlreadySaved"; // Import the CandidatesAlreadySaved component
-import type Candidate from "../interfaces/Candidate.interface"; // Import the Candidate interface
-import "../components/styles/SavedCandidatesPage.css"; // Import the SavedCandidatesList.css file
+import React, { useEffect, useState } from "react"; // import React and useState and useEffect hooks
+import CandidatesAlreadySaved from "../components/CandidatesAlreadySaved"; // import CandidatesAlreadySaved component
+import Candidate from "../interfaces/Candidate.interface"; // import Candidate interface
+import "../components/styles/SavedCandidatesList.css"; // import SavedCandidatesList.css
 
-// This component is responsible for displaying the saved candidates on the page
+// SavedCandidates functional component
 const SavedCandidates = () => {
+  // useState hook to set savedCandidates state
   const [savedCandidates, setSavedCandidates] = useState<Candidate[]>([]);
 
-  // Remove a candidate from local storage
+  // removeFromStorage function to remove candidate from local storage
   const removeFromStorage = (
     e: React.MouseEvent<SVGElement, MouseEvent>,
     currentlyOnSavedCandidatesList: boolean | null | undefined,
@@ -22,40 +22,29 @@ const SavedCandidates = () => {
       setSavedCandidates(updatedCandidates);
       localStorage.setItem("addedCandidates", JSON.stringify(updatedCandidates));
     }
-  }
+  };
 
-  // Retrieve saved candidates from local storage
+  // useEffect hook to get addedCandidates from local storage
   useEffect(() => {
-    const addedCandidates = JSON.parse(localStorage.getItem('addedCandidates') || '[]');
-    console.log("Retrieved candidates", addedCandidates);
+    const addedCandidates = JSON.parse(
+      localStorage.getItem("addedCandidates") || "[]"
+    );
     setSavedCandidates(addedCandidates);
   }, []);
 
+  // return the CandidatesAlreadySaved component or a message if no candidates are saved
   return (
-    <>
+    <div style={{ padding: "20px", color: "#ffffff" }}>
       <h1 className="pageHeader">Potential Candidates</h1>
       {savedCandidates.length > 0 ? (
-        <div>
-          <ul style={{ listStyleType: "none", padding: 0 }}>
-            <li style={{ display: "flex", justifyContent: "space-between", fontWeight: "bold" }}>
-              <span>Image</span>
-              <span>Name</span>
-              <span>Location</span>
-              <span>Email</span>
-              <span>Company</span>
-              <span>Bio</span>
-              <span>Reject</span>
-            </li>
-          </ul>
-          <CandidatesAlreadySaved
-            savedCandidates={savedCandidates}
-            removeFromStorage={removeFromStorage}
-          />
-        </div>
+        <CandidatesAlreadySaved
+          savedCandidates={savedCandidates}
+          removeFromStorage={removeFromStorage}
+        />
       ) : (
         <p>No candidates saved</p>
       )}
-    </>
+    </div>
   );
 };
 

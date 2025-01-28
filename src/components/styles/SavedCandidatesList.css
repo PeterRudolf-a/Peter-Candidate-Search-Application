@@ -1,47 +1,84 @@
+/* General layout styles for the saved candidates list */
 .candidates-list {
     list-style-type: none; /* Remove bullet points */
     padding: 0; /* Remove default padding */
     margin: 0; /* Remove default margin */
-}
-
-.candidate-item {
-    display: flex; /* Use flexbox for layout */
+    background-color: #141a45; /* Dark blue background for entire section */
+    border-radius: 8px; /* Rounded corners */
+    padding: 6px; /* Less padding for a compact layout */
+    font-size: 0.6rem; /* Reduce font size for compact look */
+  }
+  
+  /* Candidate row styles */
+  .candidate-item {
+    display: grid;
+    grid-template-columns: 60px 1.2fr 1fr 1.5fr 1fr 2fr 40px; /* Adjust column sizes */
+    gap: 2px; /* Reduce spacing between columns */
     align-items: center; /* Center items vertically */
-    border: 1px solid #0e0202; /* Optional: Add a border for each candidate */
-    margin: 10px 0; /* Space between candidates */
-    padding: 10px; /* Padding inside each candidate item */
-    border-radius: 5px; /* Optional: Rounded corners */
-    background-color: #1d0f9b; /* Light background for the candidate box */
-}
-
-.candidate-image {
-    width: 50px; /* Set a fixed width for the image */
-    height: 50px; /* Set a fixed height for the image */
-    border-radius: 50%; /* Optional: Make the image circular */
-    margin-right: 15px; /* Space between the image and text */
-}
-
-.candidate-details {
-    flex: 1; /* Allow details to take remaining space */
-    padding: 10px; /* Add padding to the details box */
-    background-color: #5f15d6; /* White background for details */
-    border: 1px solid #0f0202; /* Border around details */
-    border-radius: 5px; /* Rounded corners for details */
-    margin-left: 15px; /* Space between image and details */
-}
-
-.candidate-details h2 {
-    margin: 0; /* Remove margin from the heading */
-    font-size: 1.2em; /* Adjust font size for the name */
-}
-
-.candidate-details p {
-    margin: 5px 0; /* Space between paragraphs */
-}
-
-.remove-icon {
-    cursor: pointer; /* Change cursor to pointer on hover */
-    color: red; /* Optional: Change color of the remove icon */
-    font-size: 1.5em; /* Optional: Increase the size of the icon */
-    margin-left: 10px; /* Space between details and remove icon */
-}
+    background-color: #1d1d1f; /* Dark gray background for rows */
+    color: white;
+    border-bottom: 1px solid #333; /* Row separator */
+    padding: 6px; /* Less padding inside rows */
+  }
+  
+  /* Last row styling (no border) */
+  .candidate-item:last-child {
+    border-bottom: none;
+  }
+  
+  /* Candidate header styles */
+  .candidate-header {
+    display: grid;
+    grid-template-columns: 60px 1.2fr 1fr 1.5fr 1fr 2fr 40px; /* Match row column sizes */
+    gap: 4px;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #0a0f3e; /* Darker background for header */
+    padding: 1px; /* Compact padding */
+    border-radius: 8px 8px 0 0; /* Rounded corners for header */
+    font-size: 0.85rem; /* Smaller font size for the header */
+  }
+  
+  /* Candidate image */
+  .candidate-image {
+    width: 40px; /* Smaller image size */
+    height: 40px; /* Match width for square image */
+    max-width: fit-content; /* Prevent image from stretching */
+    max-height: fit-content; /* Prevent image from stretching */
+    border-radius: 20%; /* Circular image */
+    object-fit: cover; /* Maintain aspect ratio and crop excess */
+    border: 1px solid #ffffff; /* Thin border */
+  }
+  
+  /* Candidate details section */
+  .candidate-details {
+    padding: 2px 5px; /* Minimal padding */
+  }
+  
+  /* Text styles for details */
+  .candidate-details p {
+    margin: 0;
+    font-size: 0.85rem; /* Slightly smaller font */
+    color: #cccccc; /* Light gray text */
+  }
+  
+  .candidate-details h2 {
+    margin: 0;
+    font-size: 1rem; /* Compact header size */
+    color: #ffffff; /* White text for headers */
+  }
+  
+  /* Remove button styles */
+  .remove-icon {
+    font-size: 2.2rem; /* Compact size for remove icon */
+    color: red;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .remove-icon:hover {
+    transform: scale(1.1); /* Slight scale-up on hover */
+  }
+  
