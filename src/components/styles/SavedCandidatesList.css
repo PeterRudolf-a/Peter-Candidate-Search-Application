@@ -1,0 +1,47 @@
+.candidates-list {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.candidate-item {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    border: 1px solid #0e0202; /* Optional: Add a border for each candidate */
+    margin: 10px 0; /* Space between candidates */
+    padding: 10px; /* Padding inside each candidate item */
+    border-radius: 5px; /* Optional: Rounded corners */
+    background-color: #1d0f9b; /* Light background for the candidate box */
+}
+
+.candidate-image {
+    width: 50px; /* Set a fixed width for the image */
+    height: 50px; /* Set a fixed height for the image */
+    border-radius: 50%; /* Optional: Make the image circular */
+    margin-right: 15px; /* Space between the image and text */
+}
+
+.candidate-details {
+    flex: 1; /* Allow details to take remaining space */
+    padding: 10px; /* Add padding to the details box */
+    background-color: #5f15d6; /* White background for details */
+    border: 1px solid #0f0202; /* Border around details */
+    border-radius: 5px; /* Rounded corners for details */
+    margin-left: 15px; /* Space between image and details */
+}
+
+.candidate-details h2 {
+    margin: 0; /* Remove margin from the heading */
+    font-size: 1.2em; /* Adjust font size for the name */
+}
+
+.candidate-details p {
+    margin: 5px 0; /* Space between paragraphs */
+}
+
+.remove-icon {
+    cursor: pointer; /* Change cursor to pointer on hover */
+    color: red; /* Optional: Change color of the remove icon */
+    font-size: 1.5em; /* Optional: Increase the size of the icon */
+    margin-left: 10px; /* Space between details and remove icon */
+}

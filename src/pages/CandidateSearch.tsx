@@ -19,23 +19,23 @@ const CandidateSearch = () => {
   const fetchCandidate = async () => {
     try {
       const data = await searchGithub();
-      
+
       // Check if data is empty
       if (!data || data.length === 0) {
         console.error('No candidates found');
         return; // Exit the function if no candidates are available
       }
-  
+
       // Generate a random index to select a random candidate
       const randomIndex = Math.floor(Math.random() * data.length);
       const randomCandidate = data[randomIndex];
-  
+
       // Check if randomCandidate is defined
       if (!randomCandidate || !randomCandidate.login) {
         console.error('Random candidate is undefined or missing login');
         return; // Exit the function if randomCandidate is undefined
       }
-  
+
       // Fetch the full user data for the random candidate
       const candidateData = await searchGithubUser(randomCandidate.login);
       setCurrentCandidate({
@@ -78,6 +78,7 @@ const CandidateSearch = () => {
         <CandidateCard
           currentCandidate={currentCandidate}
           addToSavedCandidates={addToSavedCandidates}
+          fetchCandidate={fetchCandidate} // Pass fetchCandidate as a prop
         />
       )}
     </div>

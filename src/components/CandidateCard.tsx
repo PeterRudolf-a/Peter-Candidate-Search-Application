@@ -9,46 +9,44 @@ type CandidateCardProps = {
     currentCandidate: Candidate;
     addToSavedCandidates?: (() => void) | null;
     onSavedCandidatesList?: boolean | null;
-    removeFromStorage?:
-    ((
+    removeFromStorage?: (
         e: React.MouseEvent<SVGSVGElement, MouseEvent>,
         currentlyOnSavedCandidatesList: boolean | null | undefined,
         name: string | null | undefined
-    ) => void) | null;
+    ) => void | null;
+    fetchCandidate?: (() => void) | null; // Add fetchCandidate to props
 };
 
 // Define the CandidateCard component
 const CandidateCard = ({
     currentCandidate,
     addToSavedCandidates,
-    onSavedCandidatesList,
     removeFromStorage,
+    fetchCandidate,
 }: CandidateCardProps) => {
+    // Log the currentCandidate to check its properties
+    console.log("Current Candidate:", currentCandidate);
+
+    const handleRemoveCandidate = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+        removeFromStorage?.(e, true, currentCandidate.name);
+        fetchCandidate?.(); // Call fetchCandidate after removing a candidate
+    };
+
     return (
-        <div className="candidate-card">
-            <img src={currentCandidate.image} alt={currentCandidate.name} />
-            <div className="candidate-info">
-                <h2>{currentCandidate.name}</h2>
-                <p>{currentCandidate.location}</p>
-                <p>{currentCandidate.email}</p>
-                <p>{currentCandidate.company}</p>
-                <p>{currentCandidate.bio}</p>
-                {onSavedCandidatesList ? (
-                    <IoIosRemoveCircleOutline
-                        onClick={(e: React.MouseEvent<SVGSVGElement, MouseEvent>) =>
-                            removeFromStorage &&
-                            removeFromStorage(
-                                e,
-                                onSavedCandidatesList,
-                                currentCandidate.name
-                            )
-                        }
-                    />
-                ) : (
-                    <IoIosAddCircleOutline
-                        onClick={() => addToSavedCandidates?.()}
-                    />
-                )}
+        <div>
+            <div className="candidate-card">
+                <img src={currentCandidate.image || ""} alt={currentCandidate.name || "no image"} />
+                <div className="candidate-info">
+                    <h2>{currentCandidate.name || "No Name Provided"}</h2>
+                    <p>{currentCandidate.location || "No Location Provided"}</p>
+                    <p>{currentCandidate.email || "No Email Provided"}</p>
+                    <p>{currentCandidate.company || "No Company Provided"}</p>
+                    <p>{currentCandidate.bio || "No Bio Provided"}</p>
+                </div>
+            </div>
+            <div className="candidate-actions">
+                <IoIosRemoveCircleOutline onClick={handleRemoveCandidate} className="remove" />
+                <IoIosAddCircleOutline onClick={() => addToSavedCandidates?.()} className="add" />
             </div>
         </div>
     );

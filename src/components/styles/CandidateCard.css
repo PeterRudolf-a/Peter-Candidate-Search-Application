@@ -1,24 +1,44 @@
 .candidate-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 16px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .candidate-card img {
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    margin-right: 16px;
-  }
-  
-  .candidate-info {
-    flex-grow: 1;
-  }
-  
-  .candidate-info h2 {
-    margin: 0;
-    font-size: 1.5em;
-  }
+  border: 1px solid #da2323;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px;
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center items horizontally */
+  color: chocolate;
+  height: 300px; /* Set a fixed height for the card */
+}
+
+.candidate-card img {
+  border-radius: 50%;
+  width: 100px; /* Adjust width as needed */
+  height: 50%; /* Set height to 50% of the card */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+  margin-bottom: 16px; /* Add margin below the image */
+}
+
+.candidate-info {
+  text-align: center; /* Center text for better appearance */
+  flex-grow: 1; /* Allow this section to take up remaining space */
+}
+
+.candidate-info h2 {
+  margin: 0;
+  font-size: 2em; /* Adjust font size for the name */
+}
+
+.remove, .add {
+  font-size: 2.5em; /* Increase the font size for the icons */
+  margin: 8px; /* Add some margin around the icons */
+  cursor: pointer;
+  padding: 10px; /* Add padding for better touch area */
+}
+
+.remove {
+  color: red;
+}
+
+.add {
+  color: green;
+}
