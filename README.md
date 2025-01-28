@@ -21,6 +21,8 @@ I wanted to update this Candidate Search application to fetch random GitHub user
 Original code from starter code files: https://bootcampspot.instructure.com/courses/6993/assignments/89589?module_item_id=1335693
 
 ## Screenshot
+![CandidateSearchHome](https://github.com/user-attachments/assets/08b206b4-7497-4404-9b80-effc7fec1e88)
+![CandidateSavedList](https://github.com/user-attachments/assets/df5437e6-6150-49c4-8196-bbc4e9e0e7ef)
 
 
 ## Questions
