@@ -58,7 +58,7 @@ const CandidatesAlreadySaved = ({
           </div>
           <IoIosRemoveCircleOutline
             onClick={(e) =>
-              removeFromStorage(e, true, candidate.name)
+              removeFromStorage(e, true, candidate.id.toString())
             }
             className="remove-icon"
           />

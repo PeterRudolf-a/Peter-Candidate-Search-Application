@@ -12,12 +12,13 @@ const SavedCandidates = () => {
   const removeFromStorage = (
     e: React.MouseEvent<SVGElement, MouseEvent>,
     currentlyOnSavedCandidatesList: boolean | null | undefined,
-    name: string | null | undefined
+    id: string | null | undefined
   ) => {
     e.preventDefault();
+    console.log("Removing candidate with id: ", id);
     if (currentlyOnSavedCandidatesList) {
       const updatedCandidates = savedCandidates.filter(
-        (candidate) => candidate.name !== name
+        (candidate) => candidate.id !== Number(id)
       );
       setSavedCandidates(updatedCandidates);
       localStorage.setItem("addedCandidates", JSON.stringify(updatedCandidates));
